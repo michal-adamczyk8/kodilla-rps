@@ -7,8 +7,8 @@ public class CompareMoves {
         if (userMove.getName() == computerMove.getName()) {
             return 0;
         }
-        else if (userMove.getName() == "Rock") {
-            if (computerMove.getName() == "Scissors") {
+        else if (userMove.getName().equalsIgnoreCase("Rock")) {
+            if (computerMove.getName().equalsIgnoreCase("Scissors")) {
                 System.out.println("Kamień zgniata Nożyce. Zdobywasz punkt!");
                 return 1;
             } else {
@@ -16,8 +16,8 @@ public class CompareMoves {
                 return 2;
             }
         }
-        else if (userMove.getName() == "Scissors") {
-            if (computerMove.getName() == "Paper") {
+        else if (userMove.getName().equalsIgnoreCase("Scissors")) {
+            if (computerMove.getName().equalsIgnoreCase("Paper")) {
                 System.out.println("Nożyce tną Papier. Zdobywasz punkt!");
                 return 1;
             }
@@ -27,7 +27,7 @@ public class CompareMoves {
             }
         }
         else {
-            if (computerMove.getName() == "Rock") {
+            if (computerMove.getName().equalsIgnoreCase("Rock")) {
                 System.out.println("Papier nakrywa Kamień. Zdobywasz punkt!");
                 return 1;
             }

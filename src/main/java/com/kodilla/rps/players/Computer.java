@@ -9,6 +9,8 @@ import java.util.Random;
 
 public class Computer implements Player {
 
+    private int score;
+    private int i;
 
     @Override
     public Move getMove() {
@@ -17,8 +19,22 @@ public class Computer implements Player {
         Rock rock   = new Rock();
         Random generator = new Random();
         Move[] moves = new Move[]{paper, scissors, rock};
+        i++;
+        if(i%2 == 0) {
+            return moves[1];
+        }
         int index = generator.nextInt(moves.length);
         System.out.println("Komputer wybrał: " + moves[index].getName());
         return moves[index];
+    }
+
+    @Override
+    public Integer getScore() {
+        return score;
+    }
+
+    @Override
+    public void addScore() {
+        this.score++;
     }
 }

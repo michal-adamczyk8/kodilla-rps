@@ -8,18 +8,18 @@ import com.kodilla.rps.players.UsersChoiceOutOfRangeException;
 import java.util.Scanner;
 
 public class GameOn {
-    private int userScore = 0;
-    private int computerScore = 0;
-    Scanner scanner = new Scanner(System.in);
-    User user = new User();
-    Computer computer = new Computer();
 
+    private User user;
+    private Computer computer;
+
+    public GameOn(User user, Computer computer) {
+        this.user = user;
+        this.computer = computer;
+    }
 
     public void gameOn() throws UsersChoiceOutOfRangeException {
-        System.out.println("Do ilu zwycięstw chcesz zagrac?");
-        int numberOfWins = scanner.nextInt();
-        //Dlaczego tutaj działa "&&"  a nie "||"
-        while (computerScore < numberOfWins && userScore < numberOfWins) {
+        int numberOfWins = Commander.getGameCount();
+        while (computer.getScore() < numberOfWins && user.getScore() < numberOfWins) {
             Move userMove = null;
             try {
                 userMove = user.getMove();
@@ -28,22 +28,24 @@ public class GameOn {
                 userMove = user.getMove();
             }
             Move computerMove = computer.getMove();
-            if (CompareMoves.compareMoves(userMove, computerMove) == 0) {
+            int compareMoves = CompareMoves.compareMoves(userMove, computerMove);
+            if (compareMoves == 0) {
                 System.out.println("Mamy remis spróbuj jeszcze raz!");
             }
-            else if (CompareMoves.compareMoves(userMove, computerMove) == 1) {
-                userScore += 1;
+            else if (compareMoves == 1) {
+                user.addScore();
             }
             else {
-                computerScore += 1;
+                computer.addScore();
             }
         }
 
-        if (userScore > computerScore) {
-            System.out.println("Gratulacje!!! Wygrałeś! Wynik gracza: " + userScore + ". Wynik komputera: " + computerScore);
+        if (user.getScore() > computer.getScore()) {
+            System.out.println("Gratulacje!!! Wygrałeś! Wynik gracza: " + user.getScore() + ". Wynik komputera: " + computer.getScore());
         }
         else {
-            System.out.println("Niestety! Tym razem musisz przełknąć smak porażki :( Spróbuj jeszcze raz.");
+            System.out.println("Niestety! Tym razem musisz przełknąć smak porażki :( Spróbuj jeszcze raz. " +
+                    "Wynik gracza: " + user.getScore() + ". Wynik komputera: " + computer.getScore());
         }
     }
 }

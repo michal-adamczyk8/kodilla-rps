@@ -7,7 +7,15 @@ import com.kodilla.rps.moves.Scissors;
 
 import java.util.Scanner;
 
-public class User implements Player{
+public class User implements Player {
+
+    private String name;
+    private int score;
+
+    public User(String name) {
+        this.name = name;
+    }
+
     @Override
     public Move getMove() throws UsersChoiceOutOfRangeException {
         Scanner scanner = new Scanner(System.in);
@@ -33,5 +41,15 @@ public class User implements Player{
             System.out.println("Wybrałeś: " + scissors.getName());
             return scissors;
         }
+    }
+
+    @Override
+    public Integer getScore() {
+        return score;
+    }
+
+    @Override
+    public void addScore() {
+        this.score++;
     }
 }

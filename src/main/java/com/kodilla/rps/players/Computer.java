@@ -9,23 +9,13 @@ import java.util.Random;
 
 public class Computer implements Player {
 
+    private static final Random generator = new Random();
     private int score;
-    private int i;
 
     @Override
-    public Move getMove() {
-        Paper paper = new Paper();
-        Scissors scissors = new Scissors();
-        Rock rock   = new Rock();
-        Random generator = new Random();
-        Move[] moves = new Move[]{paper, scissors, rock};
-        i++;
-        if(i%2 == 0) {
-            return moves[1];
-        }
-        int index = generator.nextInt(moves.length);
-        System.out.println("Komputer wybrał: " + moves[index].getName());
-        return moves[index];
+    public int getMove() {
+        int computerMove = generator.nextInt(3)+1;
+        return computerMove;
     }
 
     @Override

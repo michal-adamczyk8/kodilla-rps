@@ -9,6 +9,8 @@ public class CompareMoves {
         }
         else if (userMove.getName().equalsIgnoreCase("Rock")) {
             if (computerMove.getName().equalsIgnoreCase("Scissors")) {
+                //Te komunikaty tez wynieśc do commandera(tak samo jak tablice),
+                //Mozna stworzyc singleton i na singletonie przechowywac tablicę wyników
                 System.out.println("Kamień zgniata Nożyce. Zdobywasz punkt!");
                 return 1;
             } else {

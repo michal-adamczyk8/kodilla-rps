@@ -27,8 +27,19 @@ public class Game {
         while (computer.getScore() < numberOfWins && user.getScore() < numberOfWins) {
             int userMove = user.getMove();
             int computerMove = computer.getMove();
-            Commander.pointInformation(userMove, computerMove);
-            compareMoveAndAddScore(userMove, computerMove);
+           compareMoveAndAddScore(userMove, computerMove);
+           printMove(userMove, computerMove, getRoundResult(userMove, computerMove));
+        }
+    }
+    private int getRoundResult(int userMove, int computerMove){
+        if (userMove == computerMove){
+            return 0;
+        }
+        else if(userWin[userMove - 1][computerMove - 1]) {
+                return 1;
+        }
+        else {
+            return 2;
         }
     }
 
@@ -37,11 +48,38 @@ public class Game {
             Commander.sameMove();
             return;
         }
-        if(userWin[userMove-1][computerMove-1]) {
+        if(userWin[userMove - 1][computerMove - 1]) {
             user.addScore();
         }
         else {
             computer.addScore();
+        }
+    }
+
+    private void printMove(int userMove, int computerMove, int roundResult) {
+        String userMoveName = getMoveName(userMove);
+        String computerMoveName = getMoveName(computerMove);
+        switch (roundResult) {
+            case 0 :
+                break;
+            case 1 :
+                System.out.println(userMoveName + " bije " + computerMoveName + ". Zdobywasz punkt!");
+                break;
+            case 2 :
+                System.out.println(computerMoveName + " bije " + userMoveName + ". Komputer zdobywa punkt!");
+        }
+    }
+
+    private String getMoveName(int move) {
+        switch(move) {
+            case 1 :
+                return "Kamień";
+            case 2 :
+                return "Papier";
+            case 3 :
+                return "Nożyce";
+            default:
+                return "";
         }
     }
 }

@@ -10,16 +10,9 @@ public class Commander {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private static final boolean userWin[][] = new boolean[][] {
-            {false, false, true},
-            {true, false, false},
-            {false, true, false}
-    };
-
     public static void startInfo(){
         System.out.println("Witamy w grze: Kamień, Papier, Nożyce");
-        String name = Commander.getUserName();
-        System.out.println("Witaj " + name + "!");
+        System.out.println("Witaj " + getUserName() + "!");
         System.out.println("Sterowanie w grze jest następujące:");
         System.out.println("Jeśli chcesz wybrać \"Kamień\" naciśnij \"1\"");
         System.out.println("Jeśli chcesz wybrać \"Papier\" naciśnij \"2\"");
@@ -36,7 +29,7 @@ public class Commander {
         System.out.println("Do ilu zwycięstw chciałbyś zagrać?");
         boolean correctChoice = false;
         do {
-            String number = scanner.nextLine();
+            String number = scanner.next();
             try {
                 correctChoice = true;
                 return Integer.parseInt(number);
@@ -53,7 +46,7 @@ public class Commander {
         boolean correctChoice = false;
         boolean playAgain = false;
         do {
-            String userChoice = scanner.nextLine();
+            String userChoice = scanner.next();
             if (userChoice.equalsIgnoreCase("t")) {
                 playAgain = true;
                 correctChoice = true;
@@ -96,18 +89,6 @@ public class Commander {
 
     public static void sameMove() {
         System.out.println("Ruch komputera i użytkownika są takie same! Mamy remis!");
-    }
-
-    public static void pointInformation(int userMove, int computerMove) {
-        if(userMove == computerMove) {
-            return;
-        }
-        if(userWin[userMove-1][computerMove-1]){
-            System.out.println("Zdobywasz punkt!!!");
-        }
-        else {
-            System.out.println("Komputer zdobywa punkt!!!");
-        }
     }
 
     public static void finishStatement(int userScore, int computerScore) {

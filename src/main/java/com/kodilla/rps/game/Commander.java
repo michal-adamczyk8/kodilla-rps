@@ -101,4 +101,31 @@ public class Commander {
                     "Wynik gracza: " + userScore + ". Wynik komputera: " + computerScore);
         }
     }
+
+    public static void printMove(int userMove, int computerMove, int roundResult) {
+        String userMoveName = getMoveName(userMove);
+        String computerMoveName = getMoveName(computerMove);
+        switch (roundResult) {
+            case 0:
+                break;
+            case 1:
+                System.out.println(userMoveName + " bije " + computerMoveName + ". Zdobywasz punkt!");
+                break;
+            case 2:
+                System.out.println(computerMoveName + " bije " + userMoveName + ". Komputer zdobywa punkt!");
+        }
+    }
+
+    public static String getMoveName(int move) {
+        switch (move) {
+            case 1:
+                return "Kamień";
+            case 2:
+                return "Papier";
+            case 3:
+                return "Nożyce";
+            default:
+                return "";
+        }
+    }
 }

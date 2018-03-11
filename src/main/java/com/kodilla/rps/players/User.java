@@ -14,7 +14,7 @@ public class User implements Player {
     private int score;
 
     @Override
-    public int getMove() throws UsersChoiceOutOfRangeException {
+    public int getMove() {
         return Commander.getMove();
     }
 

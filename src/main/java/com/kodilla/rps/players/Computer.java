@@ -1,10 +1,5 @@
 package com.kodilla.rps.players;
 
-import com.kodilla.rps.moves.Move;
-import com.kodilla.rps.moves.Paper;
-import com.kodilla.rps.moves.Rock;
-import com.kodilla.rps.moves.Scissors;
-
 import java.util.Random;
 
 public class Computer implements Player {

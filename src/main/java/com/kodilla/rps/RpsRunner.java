@@ -5,10 +5,9 @@ import com.kodilla.rps.game.Game;
 import com.kodilla.rps.game.Commander;
 import com.kodilla.rps.players.Computer;
 import com.kodilla.rps.players.User;
-import com.kodilla.rps.players.UsersChoiceOutOfRangeException;
 
 public class RpsRunner {
-    public static void main(String[] args) throws UsersChoiceOutOfRangeException {
+    public static void main(String[] args) {
         Commander.startInfo();
         boolean startGame = true;
         while (startGame) {

@@ -2,7 +2,6 @@ package com.kodilla.rps.game;
 
 import com.kodilla.rps.players.Computer;
 import com.kodilla.rps.players.User;
-import com.kodilla.rps.players.UsersChoiceOutOfRangeException;
 
 public class Game {
 
@@ -19,7 +18,7 @@ public class Game {
         this.computer = computer;
     }
 
-    public void start() throws UsersChoiceOutOfRangeException {
+    public void start() {
         int numberOfWins = Commander.getGameCount();
         while (computer.getScore() < numberOfWins && user.getScore() < numberOfWins) {
             int userMove = user.getMove();
